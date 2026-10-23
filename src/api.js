@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://todo-server-dr3j.onrender.com/api",
+  baseURL: import.meta.env.VITE_API_URL || "https://todo-server-dr3j.onrender.com",
 });
 
 api.interceptors.request.use((config) => {
