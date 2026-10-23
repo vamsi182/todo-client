@@ -1,5 +1,8 @@
-const BASE_URL =
-  import.meta.env.VITE_API_URL || "https://todo-server-dr3j.onrender.com/api";
+const RAW_URL =
+  import.meta.env.VITE_API_URL || "https://todo-server-dr3j.onrender.com";
+
+// remove trailing slashes, then make sure the URL ends with /api
+const BASE_URL = RAW_URL.replace(/\/+$/, "").replace(/\/api$/, "") + "/api";
 
 async function request(method, url, body) {
   const token = localStorage.getItem("token");
@@ -21,7 +24,6 @@ async function request(method, url, body) {
   }
 
   if (!res.ok) {
-    // same shape axios errors had, so errorMessage keeps working
     const error = new Error(data?.message || `Request failed (${res.status})`);
     error.response = { status: res.status, data };
     throw error;
