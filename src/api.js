@@ -4,6 +4,7 @@ const RAW_URL =
 // remove trailing slashes, then make sure the URL ends with /api
 const BASE_URL = RAW_URL.replace(/\/+$/, "").replace(/\/api$/, "") + "/api";
 
+console.log("Url = ", BASE_URL);
 async function request(method, url, body) {
   const token = localStorage.getItem("token");
 
